@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LetsBet Tutorials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .arrow {
+            animation: slide 1s infinite;
+        }
+        @keyframes slide {
+            0%, 100% { transform: translateY(-2px); }
+            50% { transform: translateY(5px); }
+        }
+        video {
+            height: 650px; 
+            width: auto;  
+        }
+        .bg-img {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/shahi_bg.png') center/cover no-repeat;
+        }
+        @media (min-width: 1024px) {
+            .bg-img { background: #1A1A1A; }
+        }
+    </style>
+</head>
+<body class="bg-img">
+    <nav class="p-5 bg-[#1A1A1A] flex justify-between items-center">
+        <div class="text-white">Logo</div>
+        <div class="flex gap-2">
+            <img class="w-8 bg-white p-1 rounded-full" src="img/facebook-svgrepo-com.svg" alt="Facebook">
+            <img class="w-8 bg-white p-1 rounded-full" src="img/telegram-svgrepo-com.svg" alt="Telegram">
+            <img class="w-8 bg-white p-1 rounded-full" src="img/casino-chip-style-dollar-svgrepo-com.svg" alt="Casino">
+        </div>
+    </nav>
+
+    <section>
+        <img src="img/bg5.png" alt="Background" class="w-full">
+    </section>
+
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl text-white font-bold text-center mb-5">Tutorial Videos of LetsBet</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Video Cards -->
+            <script>
+                const videos = [
+                    { title: "Withdraw", src: "videos/Withdraw.mp4", views: "2.1m" },
+                    { title: "Deposit", src: "videos/Deposit.mp4", views: "1.3m" },
+                    { title: "Profile setup", src: "videos/Profile_setup.mp4", views: "932k" },
+                    { title: "Affiliate Agent", src: "videos/Affiliate_Agent.mp4", views: "701k" }
+                ];
+                document.write(videos.map(video => `
+                    <div class="shadow-lg rounded-md overflow-hidden w-64 mx-auto">
+                        <div class="p-2 flex justify-between items-center text-white bg-slate-500 bg-opacity-30 rounded-t-lg">
+                            <div>
+                                <h2 class="text-xl font-semibold">${video.title}</h2>
+                                <p class="text-xs">Brief description of the video.</p>
+                            </div>
+                            <span class="text-2xl arrow">&#9660;</span>
+                        </div>
+                        <video class="w-full object-cover rounded-b-lg" controls>
+                            <source src="${video.src}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="flex justify-between px-2 py-1 items-center">
+                            <button class="bg-slate-800 rounded-xl py-1 px-2 text-white">${video.views}</button>
+                            <button class="share-btn p-1 bg-white rounded-full" onclick="shareVideo('${video.src}')">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 9C19.66 9 21 7.66 21 6C21 4.34 19.66 3 18 3C16.34 3 15 4.34 15 6C15 6.31 15.05 6.61 15.14 6.89L8.91 10.14C8.17 9.43 7.14 9 6 9C4.34 9 3 10.34 3 12C3 13.66 4.34 15 6 15C7.14 15 8.17 14.57 8.91 13.86L15.14 17.11C15.05 17.39 15 17.69 15 18C15 19.66 16.34 21 18 21C19.66 21 21 19.66 21 18C21 16.34 19.66 15 18 15C16.86 15 15.83 15.43 15.09 16.14L8.86 12.89C8.95 12.61 9 12.31 9 12C9 11.69 8.95 11.39 8.86 11.11L15.09 7.86C15.83 8.57 16.86 9 18 9Z" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `).join(''));
+            </script>
+        </div>
+    </div>
+
+    <p class="text-gray-400 p-3 text-center">LETSBET is known for its unique interface and is now becoming one of Asia's top and trusted online casinos...</p>
+
+    <footer class="w-full text-white text-center mt-10 p-5 bg-[#1A1A1A]">Copyright ©2019-2024 LETSBET All rights reserved.</footer>
+
+    <script>
+        function shareVideo(videoSrc) {
+            let videoUrl = window.location.origin + '/' + videoSrc;
+            if (navigator.share) {
+                navigator.share({ title: 'Check out this video!', url: videoUrl }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(videoUrl).then(() => alert('Video link copied to clipboard!')).catch(console.error);
+            }
+        }
+    </script>
+</body>
+</html>
